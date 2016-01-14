@@ -9,6 +9,7 @@
 #import "S4MDataManager.h"
 #import "AFNetworking.h"
 #import "S4MConstants.h"
+#import "S4MPromotion.h"
 
 @implementation S4MDataManager
 
@@ -38,9 +39,9 @@
             [responseDict setObject:error forKey:S4M_ERROR_KEY];
             
         } else {
+            NSArray *pomotionsArray = [self parseAndPopulatePromotionDataWithResponseDictionary:responseObject];
             [responseDict setObject:[NSNumber numberWithBool:YES] forKey:S4M_RESULT_KEY];
-            [responseDict setObject:response forKey:S4M_RESPONSE_KEY];
-            [responseDict setObject:responseObject forKey:S4M_RESPONSE_OBJECT_KEY];
+            [responseDict setObject:pomotionsArray forKey:S4M_RESPONSE_OBJECT_KEY];
         }
         block(responseDict);
     }];
@@ -50,24 +51,17 @@
 
 #pragma mark Private Methods
 
-- (void)showDataLoadErrorWithMessage:(NSString *)errorMessage {
-    
-    if ([UIAlertController class]) {
-        // use UIAlertController
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
-        
-        //[self presentViewController:alertController animated:YES completion:nil];
 
-    } else {
-        // use UIAlertView
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry", nil];
-        [alertView show];
-        
+-(NSArray *)parseAndPopulatePromotionDataWithResponseDictionary:(NSDictionary *)responseDict {
+    NSMutableArray *promotionsArray = [[NSMutableArray alloc] init];
+    S4MPromotion *promotion = nil;
+    
+    for (NSDictionary *promotionDict in responseDict) {
+        promotion = [[S4MPromotion alloc] init];
+        [promotion populateObjectWithDictionary:promotionDict];
+        [promotionsArray addObject:promotion];
     }
-    
-    
+    return [NSArray arrayWithArray:promotionsArray];
 }
 
 @end

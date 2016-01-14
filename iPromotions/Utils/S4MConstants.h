@@ -13,6 +13,16 @@ extern NSString *const S4M_DATA_URL;
 
 #pragma mark - API Keys
 
+extern NSString *const S4M_PROMOTION_ID;
+extern NSString *const S4M_PROMOTION_NATIVE_DATE;
+extern NSString *const S4M_PROMOTION_ANNOUNCEMENT_DATE;
+extern NSString *const S4M_PROMOTION_EXPIRY;
+extern NSString *const S4M_PROMOTION_ANNOUNCEMENT_DESCRIPTION;
+extern NSString *const S4M_PROMOTION_ANNOUNCEMENT_TITLE;
+extern NSString *const S4M_PROMOTION_ANNOUNCEMENT_IMAGE;
+extern NSString *const S4M_PROMOTION_ANNOUNCEMENT_IMAGE_THUMBNAIL;
+extern NSString *const S4M_PROMOTION_ANNOUNCEMENT_HTML;
+
 #pragma mark - Common Keys
 
 extern NSString *const S4M_RESULT_KEY;

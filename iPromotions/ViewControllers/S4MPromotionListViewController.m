@@ -24,4 +24,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Private Methods
+
+- (void)showDataLoadErrorWithMessage:(NSString *)errorMessage {
+    
+    if ([UIAlertController class]) {
+        // use UIAlertController
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+        
+        //[self presentViewController:alertController animated:YES completion:nil];
+        
+    } else {
+        // use UIAlertView
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry", nil];
+        [alertView show];
+        
+    }
+    
+    
+}
+
 @end

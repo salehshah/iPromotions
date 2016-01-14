@@ -18,6 +18,8 @@
 		AE522E571C45ED98002F821A /* S4MPromotionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E561C45ED98002F821A /* S4MPromotionListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E5B1C45EF49002F821A /* S4MDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E5A1C45EF49002F821A /* S4MDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E5E1C45F0D8002F821A /* S4MConstants.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E621C474BC0002F821A /* S4MPromotion.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E651C474D58002F821A /* iPromotionsModalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E641C474D58002F821A /* iPromotionsModalTests.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +62,9 @@
 		AE522E5A1C45EF49002F821A /* S4MDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MDataManager.m; sourceTree = "<group>"; };
 		AE522E5D1C45F0D8002F821A /* S4MConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MConstants.h; sourceTree = "<group>"; };
 		AE522E5E1C45F0D8002F821A /* S4MConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MConstants.m; sourceTree = "<group>"; };
+		AE522E611C474BC0002F821A /* S4MPromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MPromotion.h; sourceTree = "<group>"; };
+		AE522E621C474BC0002F821A /* S4MPromotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotion.m; sourceTree = "<group>"; };
+		AE522E641C474D58002F821A /* iPromotionsModalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPromotionsModalTests.m; sourceTree = "<group>"; };
 		F8F0409069295804C13AB02F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +127,7 @@
 		AE522DE81C45ECBF002F821A /* iPromotions */ = {
 			isa = PBXGroup;
 			children = (
+				AE522E601C474BA3002F821A /* Modal */,
 				AE522E5C1C45F0C1002F821A /* Utils */,
 				AE522E581C45EF20002F821A /* Managers */,
 				AE522E541C45ED98002F821A /* ViewControllers */,
@@ -147,6 +153,7 @@
 		AE522E021C45ECBF002F821A /* iPromotionsTests */ = {
 			isa = PBXGroup;
 			children = (
+				AE522E641C474D58002F821A /* iPromotionsModalTests.m */,
 				AE522E031C45ECBF002F821A /* iPromotionsDataManagerTests.m */,
 				AE522E051C45ECBF002F821A /* Info.plist */,
 			);
@@ -187,6 +194,15 @@
 				AE522E5E1C45F0D8002F821A /* S4MConstants.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		AE522E601C474BA3002F821A /* Modal */ = {
+			isa = PBXGroup;
+			children = (
+				AE522E611C474BC0002F821A /* S4MPromotion.h */,
+				AE522E621C474BC0002F821A /* S4MPromotion.m */,
+			);
+			path = Modal;
 			sourceTree = "<group>";
 		};
 		BE92F218790367FF3FD86060 /* Pods */ = {
@@ -381,6 +397,7 @@
 			files = (
 				AE522E571C45ED98002F821A /* S4MPromotionListViewController.m in Sources */,
 				AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */,
+				AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */,
 				AE522DEE1C45ECBF002F821A /* AppDelegate.m in Sources */,
 				AE522E5B1C45EF49002F821A /* S4MDataManager.m in Sources */,
 				AE522DEB1C45ECBF002F821A /* main.m in Sources */,
@@ -392,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE522E041C45ECBF002F821A /* iPromotionsDataManagerTests.m in Sources */,
+				AE522E651C474D58002F821A /* iPromotionsModalTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
