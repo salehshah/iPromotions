@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "S4MDataManager.h"
+#import "S4MConstants.h"
 
 @interface iPromotionsDataManagerTests : XCTestCase {
     S4MDataManager *dataManager;
@@ -31,9 +32,22 @@
     dataManager = nil;
 }
 
-- (void) testDataManager {
+- (void)testDataManager {
     XCTAssertNotNil(dataManager, @"Data manager is nil");
 }
+
+- (void)testLoadData {
+    
+    XCTestExpectation *expectation = [self expectationWithDescription:@"Load data HTTP request"];
+    [dataManager loadData:^(id responseObject) {
+        if (responseObject && [responseObject isKindOfClass:[NSDictionary class]]) {
+            [expectation fulfill];
+        }
+    }];
+    
+    [self waitForExpectationsWithTimeout:S4M_REQUEST_TIME_OUT_INTERVAL handler:nil];
+}
+
 
 - (void)testPerformanceExample {
     // This is an example of a performance test case.

@@ -21,48 +21,53 @@
     return sharedMyManager;
 }
 
+#pragma mark - Public Methods
 
--(void)loadData {
+- (void)loadData:(void (^)(id responseObject))block {
     
-//    NSString *urlString = [NSString stringWithFormat:BASE_URL,CLIENT_ID,CLIENT_SECRET,[CNUtil formattedCoordinatesStringWithCoordinates:coordinates]];
-//    NSURL *url = [NSURL URLWithString:urlString];
-//    NSURLRequest *request = [NSURLRequest requestWithURL:url];
-//    
-//    AFHTTPRequestOperation *operation = [[AFHTTPRequestOperation alloc] initWithRequest:request];
-//    operation.responseSerializer = [AFJSONResponseSerializer serializer];
-//    
-//    [self.listController startActivityIndicator];
-//    self.viewSwitchButton.enabled = NO;
-//    [operation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-//        
-//        [self.listController stopActivityIndicator];
-//        self.viewSwitchButton.enabled = YES;
-//        
-//        NSDictionary *metaDictionary = [responseObject objectForKey:META_STRING];
-//        
-//        NSInteger code = [[metaDictionary objectForKey:CODE_STRING] integerValue];
-//        if (code != 200) {
-//            [self showDataError:nil];
-//        }
-//        else {
-//            NSArray *venues = [[responseObject objectForKey:RESPONSE_STRING] objectForKey:VENUES_STRING];
-//            _places = [CNUtil sortPlacesAccordingToDistanceWithPlaces:[CNPlace populatePlacesWithDictionary:venues]];
-//            NSLog(@"places count: %lu",(unsigned long)[self.places count]);
-//            
-//            [self.listController reloadTableViewData:self.places];
-//            [self.mapController configureMapToAddPlaces:self.places];
-//            
-//        }
-//        
-//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-//        
-//        [self.listController stopActivityIndicator];
-//        
-//        [self showDataError:error];
-//    }];
-//    
-//    [operation start];
+    NSString *urlString = S4M_DATA_URL;
+    NSURL *url = [NSURL URLWithString:urlString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:url];
+    NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
+    configuration.timeoutIntervalForRequest = S4M_REQUEST_TIME_OUT_INTERVAL;
+    AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    NSURLSessionDataTask *dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
+        NSMutableDictionary *responseDict = [[NSMutableDictionary alloc] init];
+        if (error) {
+            [responseDict setObject:[NSNumber numberWithBool:NO] forKey:S4M_RESULT_KEY];
+            [responseDict setObject:error forKey:S4M_ERROR_KEY];
+            
+        } else {
+            [responseDict setObject:[NSNumber numberWithBool:YES] forKey:S4M_RESULT_KEY];
+            [responseDict setObject:response forKey:S4M_RESPONSE_KEY];
+            [responseDict setObject:responseObject forKey:S4M_RESPONSE_OBJECT_KEY];
+        }
+        block(responseDict);
+    }];
+    [dataTask resume];
 
+}
+
+#pragma mark Private Methods
+
+- (void)showDataLoadErrorWithMessage:(NSString *)errorMessage {
+    
+    if ([UIAlertController class]) {
+        // use UIAlertController
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:errorMessage preferredStyle:UIAlertControllerStyleAlert];
+        
+        //[self presentViewController:alertController animated:YES completion:nil];
+
+    } else {
+        // use UIAlertView
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry", nil];
+        [alertView show];
+        
+    }
+    
+    
 }
 
 @end

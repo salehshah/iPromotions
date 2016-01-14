@@ -14,4 +14,6 @@
 
 + (S4MDataManager *)sharedManager;
 
+- (void)loadData:(void (^)(id responseObject))block;
+
 @end

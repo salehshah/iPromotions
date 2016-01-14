@@ -13,3 +13,14 @@ extern NSString *const S4M_DATA_URL;
 
 #pragma mark - API Keys
 
+#pragma mark - Common Keys
+
+extern NSString *const S4M_RESULT_KEY;
+extern NSString *const S4M_ERROR_KEY;
+extern NSString *const S4M_RESPONSE_KEY;
+extern NSString *const S4M_RESPONSE_OBJECT_KEY;
+
+#pragma mark - Commons
+
+extern NSInteger const S4M_REQUEST_TIME_OUT_INTERVAL;
+
