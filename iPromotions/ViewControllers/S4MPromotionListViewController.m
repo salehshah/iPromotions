@@ -11,6 +11,7 @@
 #import "S4MDataManager.h"
 #import "S4MPromotion.h"
 #import "S4MConstants.h"
+#import "UIImageView+AFNetworking.h"
 
 
 @interface S4MPromotionListViewController () <UITableViewDelegate, UITableViewDataSource>
@@ -102,6 +103,18 @@
     S4MPromotion *promotion = [self.promotions objectAtIndex:indexPath.row];
     cell.textLabel.text = promotion.announcementTitle;
     cell.detailTextLabel.text = promotion.announcementDate;
+    __weak UITableViewCell *iCell = cell;
+    if (promotion.announcementImageThumbnail) {
+        NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:promotion.announcementImageThumbnail]];
+        [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                iCell.imageView.image = image;
+            });
+            
+        } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
+            
+        }];
+    }
     
     return cell;
 
