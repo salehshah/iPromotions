@@ -20,6 +20,7 @@
 		AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E5E1C45F0D8002F821A /* S4MConstants.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E621C474BC0002F821A /* S4MPromotion.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E651C474D58002F821A /* iPromotionsModalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E641C474D58002F821A /* iPromotionsModalTests.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E681C489C8A002F821A /* S4MLoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E671C489C8A002F821A /* S4MLoadingManager.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,8 @@
 		AE522E611C474BC0002F821A /* S4MPromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MPromotion.h; sourceTree = "<group>"; };
 		AE522E621C474BC0002F821A /* S4MPromotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotion.m; sourceTree = "<group>"; };
 		AE522E641C474D58002F821A /* iPromotionsModalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPromotionsModalTests.m; sourceTree = "<group>"; };
+		AE522E661C489C8A002F821A /* S4MLoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MLoadingManager.h; sourceTree = "<group>"; };
+		AE522E671C489C8A002F821A /* S4MLoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MLoadingManager.m; sourceTree = "<group>"; };
 		F8F0409069295804C13AB02F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -183,6 +186,8 @@
 			children = (
 				AE522E591C45EF49002F821A /* S4MDataManager.h */,
 				AE522E5A1C45EF49002F821A /* S4MDataManager.m */,
+				AE522E661C489C8A002F821A /* S4MLoadingManager.h */,
+				AE522E671C489C8A002F821A /* S4MLoadingManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -398,6 +403,7 @@
 				AE522E571C45ED98002F821A /* S4MPromotionListViewController.m in Sources */,
 				AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */,
 				AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */,
+				AE522E681C489C8A002F821A /* S4MLoadingManager.m in Sources */,
 				AE522DEE1C45ECBF002F821A /* AppDelegate.m in Sources */,
 				AE522E5B1C45EF49002F821A /* S4MDataManager.m in Sources */,
 				AE522DEB1C45ECBF002F821A /* main.m in Sources */,
