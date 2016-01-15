@@ -11,8 +11,8 @@
 @interface S4MPromotion : NSObject
 
 @property (nonatomic, strong) NSString *ID;
-@property (nonatomic, strong) NSDate *nativeDate;
-@property (nonatomic, strong) NSDate *announcementDate;
+@property (nonatomic, strong) NSString *nativeDate;
+@property (nonatomic, strong) NSString *announcementDate;
 @property (nonatomic, strong) NSString *expiry;
 @property (nonatomic, strong) NSString *announcementDescription;
 @property (nonatomic, strong) NSString *announcementTitle;

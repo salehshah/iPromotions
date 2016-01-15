@@ -35,14 +35,19 @@
 }
 
 - (void)showLoadingIndidcatorView {
-    [self.activityIndicator startAnimating];
-    self.loadingContainerView.hidden = NO;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.activityIndicator startAnimating];
+        self.loadingContainerView.hidden = NO;
+    });
    
 }
 
 - (void)hideLoadingIndidcatorView {
-    [self.activityIndicator stopAnimating];
-    self.loadingContainerView.hidden = YES;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.activityIndicator stopAnimating];
+        self.loadingContainerView.hidden = YES;
+    });
+    
 }
 
 #pragma mark - Private Methods
@@ -66,6 +71,8 @@
         window = [[UIApplication sharedApplication].windows objectAtIndex:0];
     }
     [[[window subviews] objectAtIndex:0] addSubview:self.loadingContainerView];
+    self.loadingContainerView.layer.cornerRadius = 8.0f;
+    self.loadingContainerView.layer.masksToBounds = YES;
     [self.loadingContainerView layoutIfNeeded];
     
     _activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];

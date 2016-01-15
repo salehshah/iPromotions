@@ -9,7 +9,7 @@
         <!--Promotion List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="S4MPromotionListViewController" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="S4MPromotionListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -24,7 +24,7 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PromotionCell" textLabel="LFp-h0-cYz" detailTextLabel="p02-da-cjo" style="IBUITableViewCellStyleSubtitle" id="wut-4S-Kpn">
-                                        <rect key="frame" x="0.0" y="92" width="560" height="44"/>
+                                        <rect key="frame" x="0.0" y="28" width="560" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wut-4S-Kpn" id="G5t-rl-NDt">
                                             <rect key="frame" x="0.0" y="0.0" width="560" height="43"/>
@@ -52,6 +52,10 @@
                                         <animations/>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="aic-Fl-hRh"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="uxb-5I-Oxb"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <animations/>
@@ -64,6 +68,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="GKr-Za-iL4"/>
+                    <connections>
+                        <outlet property="promotionsTableView" destination="rJe-5L-bV8" id="Vny-f5-Zcc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
