@@ -103,21 +103,20 @@
     S4MPromotion *promotion = [self.promotions objectAtIndex:indexPath.row];
     cell.textLabel.text = promotion.announcementTitle;
     cell.detailTextLabel.text = promotion.announcementDate;
-    __weak UITableViewCell *iCell = cell;
+    __weak UITableViewCell *weakCell = cell;
     if (promotion.announcementImageThumbnail) {
+        
         NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:promotion.announcementImageThumbnail]];
+        
         [cell.imageView setImageWithURLRequest:request placeholderImage:nil success:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, UIImage * _Nonnull image) {
-            dispatch_async(dispatch_get_main_queue(), ^{
-                iCell.imageView.image = image;
-            });
-            
+            weakCell.imageView.image = image;
+            [weakCell setNeedsLayout];
         } failure:^(NSURLRequest * _Nonnull request, NSHTTPURLResponse * _Nullable response, NSError * _Nonnull error) {
             
         }];
     }
     
     return cell;
-
 }
 
 @end
