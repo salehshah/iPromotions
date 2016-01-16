@@ -24,6 +24,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     self.title = @"Promotion Detail";
+    [self configureView];
 }
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -43,9 +44,18 @@
 
 #pragma mark - Private Methods
 
+- (void)configureView {
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                               target:self
+                                                                               action:@selector(openActionSheet)];
+    self.navigationItem.rightBarButtonItem = addButton;
+}
+
 - (void)loadWebView {
     [S4MLoadingManagerInstance showLoadingIndidcatorView];
     [self.detailWebView loadHTMLString:self.htmlString baseURL:nil];
+}
+- (void)openActionSheet {
     
 }
 
