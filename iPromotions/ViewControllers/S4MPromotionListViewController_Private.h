@@ -14,6 +14,6 @@
 @property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
 - (void)loadData;
-- (void)showDataLoadErrorWithMessage:(NSError *)error;
+- (void)showDataLoadErrorWithError:(NSError *)error;
 
 @end

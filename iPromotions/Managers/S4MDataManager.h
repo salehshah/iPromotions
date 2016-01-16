@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define S4MDataManagerInstance [S4MDataManager sharedManager];
+#define S4MDataManagerInstance [S4MDataManager sharedManager]
 
 @interface S4MDataManager : NSObject
 

@@ -20,7 +20,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
 - (void)loadData;
-- (void)showDataLoadErrorWithMessage:(NSError *)error;
+- (void)showDataLoadErrorWithError:(NSError *)error;
 
 @end
 
@@ -49,7 +49,7 @@
 - (void)loadData {
     [[S4MLoadingManager sharedManager] showLoadingIndidcatorView];
     
-    [[S4MDataManager sharedManager] loadData:^(id responseObject) {
+    [S4MDataManagerInstance loadData:^(id responseObject) {
        
         NSNumber *result = [responseObject objectForKey:S4M_RESULT_KEY];
         if ([result boolValue]) {
@@ -60,21 +60,41 @@
         }
         else {
             NSError *error = [responseObject objectForKey:S4M_ERROR_KEY];
-            [self showDataLoadErrorWithMessage:error];
+            [self showDataLoadErrorWithError:error];
         }
         [[S4MLoadingManager sharedManager] hideLoadingIndidcatorView];
     }];
     
 }
 
-- (void)showDataLoadErrorWithMessage:(NSError *)error {
+- (void)showDataLoadErrorWithError:(NSError *)error {
     
     if ([UIAlertController class]) {
         // use UIAlertController
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[error description] preferredStyle:UIAlertControllerStyleAlert];
         
-        //[self presentViewController:alertController animated:YES completion:nil];
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:@"Cancel"
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                       }];
+        
+        UIAlertAction *retryAction = [UIAlertAction
+                                   actionWithTitle:@"Retry"
+                                   style:UIAlertActionStyleDefault
+                                   handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Retry action");
+                                   }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:retryAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+        
         
     } else {
         // use UIAlertView
