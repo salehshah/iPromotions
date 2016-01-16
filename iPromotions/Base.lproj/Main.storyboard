@@ -66,7 +66,7 @@
         <!--Promotion Detail View Controller-->
         <scene sceneID="WFz-bZ-fgS">
             <objects>
-                <viewController storyboardIdentifier="PromotionDetail" id="Iyy-Ry-fhK" customClass="S4MPromotionDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromotionDetail" automaticallyAdjustsScrollViewInsets="NO" id="Iyy-Ry-fhK" customClass="S4MPromotionDetailViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fYD-WY-niw"/>
                         <viewControllerLayoutGuide type="bottom" id="hlD-IU-jWs"/>
@@ -76,7 +76,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzC-6G-YJG">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="20" y="20" width="560" height="580"/>
                                 <animations/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
@@ -87,12 +87,13 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="FzC-6G-YJG" firstAttribute="leading" secondItem="ZRN-K1-HCU" secondAttribute="leadingMargin" constant="-20" id="25J-uO-Ca4"/>
+                            <constraint firstItem="FzC-6G-YJG" firstAttribute="leading" secondItem="ZRN-K1-HCU" secondAttribute="leadingMargin" id="25J-uO-Ca4"/>
                             <constraint firstItem="hlD-IU-jWs" firstAttribute="top" secondItem="FzC-6G-YJG" secondAttribute="bottom" id="huK-vq-4TU"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="FzC-6G-YJG" secondAttribute="trailing" constant="-20" id="qs8-1r-b0R"/>
-                            <constraint firstItem="FzC-6G-YJG" firstAttribute="top" secondItem="fYD-WY-niw" secondAttribute="bottom" constant="-64" id="rlS-KD-M5i"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FzC-6G-YJG" secondAttribute="trailing" id="qs8-1r-b0R"/>
+                            <constraint firstItem="FzC-6G-YJG" firstAttribute="top" secondItem="fYD-WY-niw" secondAttribute="bottom" id="rlS-KD-M5i"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
                     <connections>
                         <outlet property="detailWebView" destination="FzC-6G-YJG" id="lXb-KO-nOd"/>
                     </connections>
@@ -100,6 +101,109 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Z5y-vo-dda" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3381" y="-35"/>
+        </scene>
+        <!--Request More Info View Controller-->
+        <scene sceneID="n1J-h3-E9W">
+            <objects>
+                <viewController storyboardIdentifier="RequestMoreInfo" id="NiP-37-6Go" customClass="S4MRequestMoreInfoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UIl-GR-sXl"/>
+                        <viewControllerLayoutGuide type="bottom" id="yRm-qB-uY5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gaS-GT-nx0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YzJ-IJ-lws">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NiP-37-6Go" id="nVM-sO-00X"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Mobile Number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MYK-ns-zn4">
+                                <rect key="frame" x="20" y="110" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NiP-37-6Go" id="nHf-pH-gXC"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cOs-XI-kZq">
+                                <rect key="frame" x="20" y="148" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NiP-37-6Go" id="LZd-Ke-F4z"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Birth Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kZP-og-2Bv">
+                                <rect key="frame" x="20" y="186" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NiP-37-6Go" id="gra-Ax-QQe"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Address" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aWR-RA-Gcx">
+                                <rect key="frame" x="20" y="224" width="560" height="30"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="NiP-37-6Go" id="HG2-P4-6SS"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Send Promotions to my Mail?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TsL-qB-BIN">
+                                <rect key="frame" x="20" y="294" width="560" height="21"/>
+                                <animations/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-Ua-VGb">
+                                <rect key="frame" x="276" y="323" width="51" height="31"/>
+                                <animations/>
+                            </switch>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="YzJ-IJ-lws" secondAttribute="trailing" id="3oi-7f-5lV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MYK-ns-zn4" secondAttribute="trailing" id="8rC-0T-x0q"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="aWR-RA-Gcx" secondAttribute="trailing" id="E3a-j3-Bat"/>
+                            <constraint firstItem="aWR-RA-Gcx" firstAttribute="top" secondItem="kZP-og-2Bv" secondAttribute="bottom" constant="8" id="F2a-3m-IdQ"/>
+                            <constraint firstItem="cOs-XI-kZq" firstAttribute="top" secondItem="MYK-ns-zn4" secondAttribute="bottom" constant="8" id="GFf-Ri-0G2"/>
+                            <constraint firstItem="Q0b-Ua-VGb" firstAttribute="centerX" secondItem="gaS-GT-nx0" secondAttribute="centerX" id="GYh-Hw-SyP"/>
+                            <constraint firstItem="TsL-qB-BIN" firstAttribute="top" secondItem="aWR-RA-Gcx" secondAttribute="bottom" constant="40" id="IGl-e5-0OQ"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="MYK-ns-zn4" secondAttribute="leading" id="MZa-U7-HAm"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="cOs-XI-kZq" secondAttribute="trailing" id="U2y-76-m8B"/>
+                            <constraint firstItem="Q0b-Ua-VGb" firstAttribute="top" secondItem="TsL-qB-BIN" secondAttribute="bottom" constant="8" id="UFs-8T-Lso"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="kZP-og-2Bv" secondAttribute="leading" id="WHE-qj-BfV"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kZP-og-2Bv" secondAttribute="trailing" id="Wnc-cg-XvY"/>
+                            <constraint firstItem="YzJ-IJ-lws" firstAttribute="top" secondItem="UIl-GR-sXl" secondAttribute="bottom" constant="8" id="gkd-8U-n8P"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="TsL-qB-BIN" secondAttribute="trailing" id="jO3-hd-bHb"/>
+                            <constraint firstItem="kZP-og-2Bv" firstAttribute="top" secondItem="cOs-XI-kZq" secondAttribute="bottom" constant="8" id="kRZ-8f-teo"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="TsL-qB-BIN" secondAttribute="leading" id="qEw-vV-fdp"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="cOs-XI-kZq" secondAttribute="leading" id="sN6-7l-SX6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="aWR-RA-Gcx" secondAttribute="leading" id="ubr-6L-WsG"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="YzJ-IJ-lws" secondAttribute="leading" id="vh2-E1-gIZ"/>
+                            <constraint firstItem="MYK-ns-zn4" firstAttribute="top" secondItem="YzJ-IJ-lws" secondAttribute="bottom" constant="8" id="xRD-uO-8Xs"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="E6Z-OH-ImC"/>
+                    <connections>
+                        <outlet property="sendPromotionsSwitch" destination="Q0b-Ua-VGb" id="lQE-Xm-p59"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w4s-K5-x5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4935" y="-35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e7K-cC-sMN">
@@ -119,6 +223,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9K1-jS-vgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1815" y="-35"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dJa-Wz-OMZ">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4Ad-Ic-YRt" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tJz-lp-vAQ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="NiP-37-6Go" kind="relationship" relationship="rootViewController" id="hXl-ci-knh"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CQK-wY-qhY" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4123" y="-35"/>
         </scene>
     </scenes>
 </document>

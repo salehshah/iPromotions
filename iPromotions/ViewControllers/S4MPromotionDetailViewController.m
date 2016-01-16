@@ -10,6 +10,7 @@
 #import "S4MLoadingManager.h"
 #import "S4MAlertManager.h"
 #import "S4MPromotion.h"
+#import "S4MRequestMoreInfoViewController.h"
 
 @interface S4MPromotionDetailViewController () <UIWebViewDelegate,UIActionSheetDelegate>
 
@@ -63,17 +64,16 @@
         UIAlertAction *cancelAction = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"Cancel", @"")
                                        style:UIAlertActionStyleCancel
-                                       handler:^(UIAlertAction *action)
-                                       {
-                                           NSLog(@"Cancel action");
-                                       }];
+                                       handler:nil];
         
         UIAlertAction *moreInfoAction = [UIAlertAction
                                       actionWithTitle:NSLocalizedString(@"Request More Info", @"")
                                       style:UIAlertActionStyleDefault
                                       handler:^(UIAlertAction *action)
                                       {
-                                          NSLog(@"More info action");
+                                          UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                          S4MRequestMoreInfoViewController *requestMoreInfoViewController = [storyboard instantiateViewControllerWithIdentifier:@"RequestMoreInfo"];
+                                          [self presentViewController:requestMoreInfoViewController animated:YES completion:nil];
                                           
                                       }];
         UIAlertAction *shareAction = [UIAlertAction
