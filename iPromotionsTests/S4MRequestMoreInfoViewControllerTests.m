@@ -66,17 +66,34 @@
     UIBarButtonItem *barItem = self.viewController.navigationItem.rightBarButtonItem;
     SEL action = barItem.action;
     NSString *actionName = NSStringFromSelector(action);
-    if (![actionName isEqualToString:@"sendButtonPressed"]) {
+    if (![actionName isEqualToString:@"sendButtonPressed:"]) {
         XCTAssertFalse(@"Right bar button target not set properly");
     }
     
     barItem = self.viewController.navigationItem.leftBarButtonItem;
     action = barItem.action;
     actionName = NSStringFromSelector(action);
-    if (![actionName isEqualToString:@"cancelButtonPressed"]) {
+    if (![actionName isEqualToString:@"cancelButtonPressed:"]) {
         XCTAssertFalse(@"Left bar button target not set properly");
     }
 }
+
+#pragma mark - UITextFieldDelegate
+
+- (void)testIfTextFieldShouldReturnMethod {
+    [self.viewController textFieldShouldReturn:self.viewController.nameTextField];
+    XCTAssertFalse(self.viewController.mobileTextField.isFirstResponder,@"Fields return button not working properly");
+    [self.viewController textFieldShouldReturn:self.viewController.mobileTextField];
+    XCTAssertFalse(self.viewController.emailTextField.isFirstResponder,@"Fields return button not working properly");
+    [self.viewController textFieldShouldReturn:self.viewController.emailTextField];
+    XCTAssertFalse(self.viewController.birthDateField.isFirstResponder,@"Fields return button not working properly");
+    [self.viewController textFieldShouldReturn:self.viewController.birthDateField];
+    XCTAssertFalse(self.viewController.addressField.isFirstResponder,@"Fields return button not working properly");
+    [self.viewController textFieldShouldReturn:self.viewController.addressField];
+    XCTAssertFalse(self.viewController.addressField.isFirstResponder,@"Fields return button not working properly");
+}
+
+#pragma mark - Validation
 
 - (void)testValidateFields {
     

@@ -20,7 +20,7 @@
             errorMessage = NSLocalizedString(@"Could not connect to the server, please try again.", @"");
             break;
         case -1003:
-            errorMessage = NSLocalizedString(@"Request timed out, please try again.", @"");
+            errorMessage = NSLocalizedString(@"Server not responding, please try again.", @"");
             break;
             
         default:

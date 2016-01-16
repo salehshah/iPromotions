@@ -73,7 +73,9 @@
                                       {
                                           UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
                                           S4MRequestMoreInfoViewController *requestMoreInfoViewController = [storyboard instantiateViewControllerWithIdentifier:@"RequestMoreInfo"];
-                                          [self presentViewController:requestMoreInfoViewController animated:YES completion:nil];
+                                          UINavigationController *navigationController =
+                                          [[UINavigationController alloc] initWithRootViewController:requestMoreInfoViewController];
+                                          [self presentViewController:navigationController animated:YES completion:nil];
                                           
                                       }];
         UIAlertAction *shareAction = [UIAlertAction
