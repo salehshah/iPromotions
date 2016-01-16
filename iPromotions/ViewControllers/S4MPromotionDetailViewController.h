@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+@class S4MPromotion;
 @interface S4MPromotionDetailViewController : UIViewController
 
-- (void)setPromotionHTMLString:(NSString *)htmlString;
+- (void)setSelectedPromotion:(S4MPromotion *)promotion;
 
 @end

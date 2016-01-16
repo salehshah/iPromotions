@@ -9,11 +9,12 @@
 #import "S4MPromotionDetailViewController.h"
 #import "S4MLoadingManager.h"
 #import "S4MAlertManager.h"
+#import "S4MPromotion.h"
 
-@interface S4MPromotionDetailViewController () <UIWebViewDelegate>
+@interface S4MPromotionDetailViewController () <UIWebViewDelegate,UIActionSheetDelegate>
 
-@property (nonatomic, strong) NSString *htmlString;
 @property (weak, nonatomic) IBOutlet UIWebView *detailWebView;
+@property (nonatomic, strong) S4MPromotion *promotion;
 
 @end
 
@@ -38,8 +39,8 @@
 
 #pragma mark - Public Methods
 
-- (void)setPromotionHTMLString:(NSString *)htmlString {
-    self.htmlString = htmlString;
+- (void)setSelectedPromotion:(S4MPromotion *)promotion {
+    self.promotion = promotion;
 }
 
 #pragma mark - Private Methods
@@ -53,10 +54,55 @@
 
 - (void)loadWebView {
     [S4MLoadingManagerInstance showLoadingIndidcatorView];
-    [self.detailWebView loadHTMLString:self.htmlString baseURL:nil];
+    [self.detailWebView loadHTMLString:self.promotion.announcementHTML baseURL:nil];
 }
 - (void)openActionSheet {
+    NSArray *actions = nil;
+    if ([UIAlertController class]) {
+        // use UIAlertController when available
+        UIAlertAction *cancelAction = [UIAlertAction
+                                       actionWithTitle:NSLocalizedString(@"Cancel", @"")
+                                       style:UIAlertActionStyleCancel
+                                       handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                       }];
+        
+        UIAlertAction *moreInfoAction = [UIAlertAction
+                                      actionWithTitle:NSLocalizedString(@"Request More Info", @"")
+                                      style:UIAlertActionStyleDefault
+                                      handler:^(UIAlertAction *action)
+                                      {
+                                          NSLog(@"More info action");
+                                          
+                                      }];
+        UIAlertAction *shareAction = [UIAlertAction
+                                         actionWithTitle:NSLocalizedString(@"Share", @"")
+                                         style:UIAlertActionStyleDefault
+                                         handler:^(UIAlertAction *action)
+                                         {
+                                             [self openSharingController];
+                                             
+                                         }];
+        
+        actions = [NSArray arrayWithObjects:cancelAction,moreInfoAction,shareAction, nil];
+        
+    } else {
+        // use UIAlertView for legacy version
+        
+        actions = [NSArray arrayWithObjects:NSLocalizedString(@"Cancel", @""),NSLocalizedString(@"Request More Info", @""),NSLocalizedString(@"Share", @""), nil];
+    }
     
+    [S4MAlertManagerInstance showActionSheetWithSender:self actions:actions];
+}
+
+- (void)openSharingController {
+    
+    NSArray* sharedObjects=[NSArray arrayWithObjects:self.promotion.announcementDescription, nil];
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc]
+                                                        initWithActivityItems:sharedObjects applicationActivities:nil];
+    activityViewController.popoverPresentationController.sourceView = self.view;
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 #pragma mark - UIWebViewDelegate
@@ -79,8 +125,7 @@
         [S4MAlertManagerInstance showAlertForError:error sender:self actions:actions];
         
     } else {
-        // use UIAlertView for legacy version
-        
+        // use UIAlertView for legacy versions
         actions = [NSArray arrayWithObjects:NSLocalizedString(@"OK", @""), nil];
         [S4MAlertManagerInstance showAlertForError:error sender:nil actions:actions];
     }

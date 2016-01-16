@@ -61,10 +61,41 @@
             }
         }
         [alertView show];
-        
     }
+}
+
+- (void)showActionSheetWithSender:(UIViewController *)sender actions:(NSArray *)actions {
     
-    
+    if ([UIAlertController class]) {
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+        for (UIAlertAction *action in actions) {
+            [alertController addAction:action];
+        }
+        
+        [sender presentViewController:alertController animated:YES completion:nil];
+    }
+    else {
+        NSString *cancelButtonTitle = nil;
+        if (actions) {
+            cancelButtonTitle = [actions objectAtIndex:0];
+        }
+        id iSender = sender; // just to get rid of the warning.
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:iSender
+                                                        cancelButtonTitle:cancelButtonTitle
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:nil];
+        if (actions) {
+            for (int i = 1; i < [actions count]; i++) {
+                NSString *buttonTitle = [actions objectAtIndex:i];
+                [actionSheet addButtonWithTitle:buttonTitle];
+            }
+        }
+        
+        [actionSheet showInView:sender.view];
+    }
 }
 
 @end

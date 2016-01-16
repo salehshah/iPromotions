@@ -8,6 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "S4MPromotionDetailViewController_Private.h"
+#import "S4MPromotion.h"
 
 @interface S4MPromotionDetailViewControllerTests : XCTestCase
 
@@ -42,9 +43,10 @@
 #pragma mark - Public method tests
 
 - (void)testPromotionHTMLString {
-    NSString *htmlString = @"I am a html string";
-    [self.viewController setPromotionHTMLString:htmlString];
-    XCTAssertEqualObjects(htmlString, self.viewController.htmlString, @"HTML strings not set properly");
+    NSString *htmlString = @"This is a html string";
+    S4MPromotion *promotion = [S4MPromotion testObject];
+    [self.viewController setSelectedPromotion:promotion];
+    XCTAssertEqualObjects(htmlString, self.viewController.promotion.announcementHTML, @"HTML strings not set properly");
 }
 
 #pragma mark - View loading tests

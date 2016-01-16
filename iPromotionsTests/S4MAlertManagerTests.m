@@ -57,6 +57,44 @@
     
 }
 
+- (void)testShowActionSheet {
+    // This is an example of a functional test case.
+    // Use XCTAssert and related functions to verify your tests produce the correct results.
+    
+    [S4MAlertManagerInstance showActionSheetWithSender:nil actions:nil];
+    
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    if (!window)
+    {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
+    UIView *view = [[window subviews] objectAtIndex:0];
+    
+    if ([view isKindOfClass:[UIAlertView class]] || [view isKindOfClass:[UIAlertController class]]) {
+        XCTAssert(@"Action sheet is visible on screen, which should not be visible because there are no actions.");
+    }
+    
+    UIAlertAction *okAction = [UIAlertAction
+                                     actionWithTitle:NSLocalizedString(@"Ok", @"")
+                                     style:UIAlertActionStyleDefault
+                                   handler:nil];
+    UIAlertAction *cancelAction = [UIAlertAction
+                                  actionWithTitle:NSLocalizedString(@"Cancel", @"")
+                                  style:UIAlertActionStyleDefault
+                                handler:nil];
+    
+    NSArray *actions = [NSArray arrayWithObjects:okAction,cancelAction, nil];
+    
+    [S4MAlertManagerInstance showActionSheetWithSender:nil actions:actions];
+    
+    view = [[window subviews] objectAtIndex:0];
+    
+    if (![view isKindOfClass:[UIAlertView class]] && ![view isKindOfClass:[UIAlertController class]]) {
+        XCTAssert(@"Action sheet is not visible on screen");
+    }
+    
+}
+
 - (void)testPerformanceExample {
     // This is an example of a performance test case.
     [self measureBlock:^{

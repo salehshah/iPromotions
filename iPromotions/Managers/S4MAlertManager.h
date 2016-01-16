@@ -11,10 +11,10 @@
 
 #define S4MAlertManagerInstance [S4MAlertManager sharedManager]
 
-@interface S4MAlertManager : NSObject
+@interface S4MAlertManager : NSObject <UIActionSheetDelegate>
 
 + (S4MAlertManager *)sharedManager;
 
 - (void)showAlertForError:(NSError *)error sender:(UIViewController *)sender actions:(NSArray *)actions;
-
+- (void)showActionSheetWithSender:(UIViewController *)sender actions:(NSArray *)actions;
 @end

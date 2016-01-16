@@ -33,6 +33,7 @@
     promotion.ID = @"1111";
     promotion.announcementTitle = @"Test Promotion";
     promotion.announcementDate = @"Jan 1, 1970";
+    promotion.announcementHTML = @"This is a html string";
     return promotion;
 }
 @end

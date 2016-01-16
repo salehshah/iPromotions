@@ -7,10 +7,10 @@
 //
 
 #import "S4MPromotionDetailViewController.h"
-
+@class S4MPromotion;
 @interface S4MPromotionDetailViewController ()
 
-@property (nonatomic, strong) NSString *htmlString;
+@property (nonatomic, strong) S4MPromotion *promotion;
 @property (weak, nonatomic) IBOutlet UIWebView *detailWebView;
 
 @end

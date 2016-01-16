@@ -127,7 +127,7 @@
     
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     S4MPromotionDetailViewController *promotionDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"PromotionDetail"];
-    [promotionDetailViewController setPromotionHTMLString:promotion.announcementHTML];
+    [promotionDetailViewController setSelectedPromotion:promotion];
     [self.navigationController pushViewController:promotionDetailViewController animated:YES];
     
 }
