@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface S4MPromotionListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface S4MPromotionListViewController : UIViewController <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
 
 @end

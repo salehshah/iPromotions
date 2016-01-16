@@ -69,13 +69,22 @@
 
 - (void)showDataLoadErrorWithError:(NSError *)error {
     
+    NSString *errorMessage = nil;
+    if (error.code == -1009) {
+        errorMessage = NSLocalizedString(@"Your connection appears to be offline. Try again after connecting to an internet connection.", @"");
+    }
+    else {
+        errorMessage = NSLocalizedString(@"Something went wrong, please try again.", @"");
+    }
+    
     if ([UIAlertController class]) {
         // use UIAlertController
         
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:[error description] preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:errorMessage
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *cancelAction = [UIAlertAction
-                                       actionWithTitle:@"Cancel"
+                                       actionWithTitle:NSLocalizedString(@"Cancel", @"")
                                        style:UIAlertActionStyleCancel
                                        handler:^(UIAlertAction *action)
                                        {
@@ -83,11 +92,12 @@
                                        }];
         
         UIAlertAction *retryAction = [UIAlertAction
-                                   actionWithTitle:@"Retry"
+                                   actionWithTitle:NSLocalizedString(@"Retry", @"")
                                    style:UIAlertActionStyleDefault
                                    handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"Retry action");
+                                       [self loadData];
                                    }];
         
         [alertController addAction:cancelAction];
@@ -99,12 +109,27 @@
     } else {
         // use UIAlertView
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:[error description] delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Retry", nil];
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage
+                                                           delegate:self
+                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
+                                                  otherButtonTitles:NSLocalizedString(@"Retry", @""), nil];
         [alertView show];
         
     }
     
     
+}
+
+#pragma mark - UIAlertView Delegate
+
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+        NSLog(@"Cancel action");
+    }
+    else {
+        NSLog(@"Retry action");
+        [self loadData];
+    }
 }
 
 #pragma mark - UITableView Delegate
