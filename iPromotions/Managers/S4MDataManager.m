@@ -51,7 +51,6 @@
 
 #pragma mark Private Methods
 
-
 -(NSArray *)parseAndPopulatePromotionDataWithResponseDictionary:(NSDictionary *)responseDict {
     NSMutableArray *promotionsArray = [[NSMutableArray alloc] init];
     S4MPromotion *promotion = nil;

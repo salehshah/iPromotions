@@ -13,9 +13,10 @@
 #import "S4MConstants.h"
 #import "UIImageView+AFNetworking.h"
 #import "S4MUtils.h"
+#import "S4MPromotionDetailViewController.h"
 
 
-@interface S4MPromotionListViewController ()
+@interface S4MPromotionListViewController () <UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray *promotions;
 
@@ -70,12 +71,11 @@
 }
 
 - (void)showDataLoadErrorWithError:(NSError *)error {
-    // 1004 could not connect to the server
-    // 1001 request timed out
+    
     NSString *errorMessage = [S4MUtils errorMessageForErrorCode:error.code];
     
     if ([UIAlertController class]) {
-        // use UIAlertController
+        // use UIAlertController where available
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:errorMessage
                                                                           preferredStyle:UIAlertControllerStyleAlert];
@@ -104,7 +104,7 @@
         
         
     } else {
-        // use UIAlertView
+        // use UIAlertView for legacy version
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage
                                                            delegate:self
@@ -133,6 +133,16 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 44.0f;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    S4MPromotion *promotion = [self.promotions objectAtIndex:indexPath.row];
+    
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    S4MPromotionDetailViewController *promotionDetailViewController = [storyboard instantiateViewControllerWithIdentifier:@"PromotionDetail"];
+    [promotionDetailViewController setPromotionHTMLString:promotion.announcementHTML];
+    [self.navigationController pushViewController:promotionDetailViewController animated:YES];
+    
 }
 
 #pragma mark - UITableView DataSource

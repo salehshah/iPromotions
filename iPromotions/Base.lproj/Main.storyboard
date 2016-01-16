@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Promotion List View Controller-->
@@ -27,7 +28,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qGH-3v-bQ3">
@@ -35,7 +36,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -61,6 +62,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zHY-oV-poG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2627" y="-35"/>
+        </scene>
+        <!--Promotion Detail View Controller-->
+        <scene sceneID="WFz-bZ-fgS">
+            <objects>
+                <viewController storyboardIdentifier="PromotionDetail" id="Iyy-Ry-fhK" customClass="S4MPromotionDetailViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fYD-WY-niw"/>
+                        <viewControllerLayoutGuide type="bottom" id="hlD-IU-jWs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZRN-K1-HCU">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FzC-6G-YJG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="Iyy-Ry-fhK" id="a9e-Ek-U1G"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="FzC-6G-YJG" firstAttribute="leading" secondItem="ZRN-K1-HCU" secondAttribute="leadingMargin" constant="-20" id="25J-uO-Ca4"/>
+                            <constraint firstItem="hlD-IU-jWs" firstAttribute="top" secondItem="FzC-6G-YJG" secondAttribute="bottom" id="huK-vq-4TU"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="FzC-6G-YJG" secondAttribute="trailing" constant="-20" id="qs8-1r-b0R"/>
+                            <constraint firstItem="FzC-6G-YJG" firstAttribute="top" secondItem="fYD-WY-niw" secondAttribute="bottom" constant="-64" id="rlS-KD-M5i"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailWebView" destination="FzC-6G-YJG" id="lXb-KO-nOd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5y-vo-dda" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3381" y="-35"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="e7K-cC-sMN">
