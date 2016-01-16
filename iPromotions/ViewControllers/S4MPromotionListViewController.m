@@ -19,6 +19,8 @@
 @property (nonatomic, strong) NSArray *promotions;
 @property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
+- (void)showDataLoadErrorWithMessage:(NSError *)error;
+
 @end
 
 @implementation S4MPromotionListViewController
@@ -50,7 +52,7 @@
        
         NSNumber *result = [responseObject objectForKey:S4M_RESULT_KEY];
         if ([result boolValue]) {
-            _promotions = [responseObject objectForKey:S4M_RESPONSE_OBJECT_KEY];
+            self.promotions = [responseObject objectForKey:S4M_RESPONSE_OBJECT_KEY];
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self.promotionsTableView reloadData];
             });
