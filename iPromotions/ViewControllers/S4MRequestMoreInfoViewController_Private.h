@@ -21,5 +21,6 @@
 - (void)sendButtonPressed:(id)sender;
 - (void)cancelButtonPressed:(id)sender;
 - (IBAction)sendPromotionsSwitchValueChanged:(id)sender;
+- (BOOL)validateFields;
 
 @end

@@ -22,7 +22,7 @@
 - (void)cancelButtonPressed:(id)sender;
 - (void)doneClicked:(id)sender;
 - (IBAction)sendPromotionsSwitchValueChanged:(id)sender;
-
+- (BOOL)validateFields;
 @end
 
 @implementation S4MRequestMoreInfoViewController
@@ -60,12 +60,61 @@
 }
 
 - (void)sendButtonPressed:(id)sender {
+    if ([self validateFields]) {
+        
+    }
+    else {
+        //get nserror
+    }
     
 }
 
 - (void)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+-(BOOL)validateFields {
+    //return nserror
+    if (!self.nameTextField.text || [self.nameTextField.text isEqualToString:@""]) {
+        return NO;
+    }
+    if (!self.mobileTextField.text || [self.nameTextField.text isEqualToString:@""]) {
+        return NO;
+    }
+    else {
+        NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
+        [formatter setLocale: [NSLocale systemLocale]];
+        [formatter setAllowsFloats: NO];
+        if (![formatter numberFromString: self.mobileTextField.text]) {
+            return NO;
+        }
+    }
+    if (!self.emailTextField.text || [self.nameTextField.text isEqualToString:@""]) {
+        return NO;
+    }
+    else {
+        BOOL stricterFilter = NO; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
+        NSString *stricterFilterString = @"^[A-Z0-9a-z\\._%+-]+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2,4}$";
+        NSString *laxString = @"^.+@([A-Za-z0-9-]+\\.)+[A-Za-z]{2}[A-Za-z]*$";
+        NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
+        NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
+        if (![emailTest evaluateWithObject:self.emailTextField.text]) {
+            return NO;
+        }
+    }
+    if (self.birthDateField.text) {
+        NSString *birthDate = self.birthDateField.text;
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
+        NSDate *date = [dateFormatter dateFromString:birthDate];
+        if (!date) {
+            return NO;
+        }
+    }
+    
+    return YES;
+}
+
 - (void)doneClicked:(id)sender {
     UIBarButtonItem *doneButton = (UIBarButtonItem *)sender;
     if (doneButton.tag == 11) { // done tapped on mobile number field
