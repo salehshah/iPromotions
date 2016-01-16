@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
+#define S4MLoadingManagerInstance [S4MLoadingManager sharedManager]
+
 @interface S4MLoadingManager : NSObject
 
 + (S4MLoadingManager *)sharedManager;

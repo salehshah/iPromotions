@@ -17,7 +17,6 @@
 @interface S4MPromotionListViewController ()
 
 @property (nonatomic, strong) NSArray *promotions;
-@property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
 - (void)loadData;
 - (void)showDataLoadErrorWithError:(NSError *)error;
@@ -47,7 +46,7 @@
 #pragma mark - Private Methods
 
 - (void)loadData {
-    [[S4MLoadingManager sharedManager] showLoadingIndidcatorView];
+    [S4MLoadingManagerInstance showLoadingIndidcatorView];
     
     [S4MDataManagerInstance loadData:^(id responseObject) {
        
@@ -55,14 +54,14 @@
         if ([result boolValue]) {
             self.promotions = [responseObject objectForKey:S4M_RESPONSE_OBJECT_KEY];
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self.promotionsTableView reloadData];
+                [self.tableView reloadData];
             });
         }
         else {
             NSError *error = [responseObject objectForKey:S4M_ERROR_KEY];
             [self showDataLoadErrorWithError:error];
         }
-        [[S4MLoadingManager sharedManager] hideLoadingIndidcatorView];
+        [S4MLoadingManagerInstance hideLoadingIndidcatorView];
     }];
     
 }
@@ -147,7 +146,7 @@
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PromotionCell" forIndexPath:indexPath];
-    
+    [cell setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
     S4MPromotion *promotion = [self.promotions objectAtIndex:indexPath.row];
     cell.textLabel.text = promotion.announcementTitle;
     cell.detailTextLabel.text = promotion.announcementDate;

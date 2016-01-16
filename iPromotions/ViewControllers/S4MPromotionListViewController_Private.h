@@ -11,7 +11,6 @@
 @interface S4MPromotionListViewController ()
 
 @property (nonatomic, strong) NSArray *promotions;
-@property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
 - (void)loadData;
 - (void)showDataLoadErrorWithError:(NSError *)error;
