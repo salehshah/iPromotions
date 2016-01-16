@@ -10,11 +10,11 @@
 #import "S4MPromotion.h"
 #import "S4MConstants.h"
 
-@interface iPromotionsModalTests : XCTestCase
+@interface S4MPromotionTests : XCTestCase
 
 @end
 
-@implementation iPromotionsModalTests
+@implementation S4MPromotionTests
 
 - (void)setUp {
     [super setUp];

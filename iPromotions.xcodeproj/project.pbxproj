@@ -13,13 +13,13 @@
 		AE522DF41C45ECBF002F821A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE522DF21C45ECBF002F821A /* Main.storyboard */; };
 		AE522DF61C45ECBF002F821A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE522DF51C45ECBF002F821A /* Assets.xcassets */; };
 		AE522DF91C45ECBF002F821A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE522DF71C45ECBF002F821A /* LaunchScreen.storyboard */; };
-		AE522E041C45ECBF002F821A /* iPromotionsDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E031C45ECBF002F821A /* iPromotionsDataManagerTests.m */; };
+		AE522E041C45ECBF002F821A /* S4MDataManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */; };
 		AE522E0F1C45ECBF002F821A /* iPromotionsUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E0E1C45ECBF002F821A /* iPromotionsUITests.m */; };
 		AE522E571C45ED98002F821A /* S4MPromotionListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E561C45ED98002F821A /* S4MPromotionListViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E5B1C45EF49002F821A /* S4MDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E5A1C45EF49002F821A /* S4MDataManager.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E5E1C45F0D8002F821A /* S4MConstants.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E621C474BC0002F821A /* S4MPromotion.m */; settings = {ASSET_TAGS = (); }; };
-		AE522E651C474D58002F821A /* iPromotionsModalTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E641C474D58002F821A /* iPromotionsModalTests.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E651C474D58002F821A /* S4MPromotionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E641C474D58002F821A /* S4MPromotionTests.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E681C489C8A002F821A /* S4MLoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E671C489C8A002F821A /* S4MLoadingManager.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E6B1C49EE38002F821A /* S4MPromotionListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
@@ -53,7 +53,7 @@
 		AE522DF81C45ECBF002F821A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE522DFA1C45ECBF002F821A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE522DFF1C45ECBF002F821A /* iPromotionsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPromotionsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE522E031C45ECBF002F821A /* iPromotionsDataManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPromotionsDataManagerTests.m; sourceTree = "<group>"; };
+		AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = S4MDataManagerTests.m; sourceTree = "<group>"; };
 		AE522E051C45ECBF002F821A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE522E0A1C45ECBF002F821A /* iPromotionsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iPromotionsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE522E0E1C45ECBF002F821A /* iPromotionsUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iPromotionsUITests.m; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		AE522E5E1C45F0D8002F821A /* S4MConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MConstants.m; sourceTree = "<group>"; };
 		AE522E611C474BC0002F821A /* S4MPromotion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MPromotion.h; sourceTree = "<group>"; };
 		AE522E621C474BC0002F821A /* S4MPromotion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotion.m; sourceTree = "<group>"; };
-		AE522E641C474D58002F821A /* iPromotionsModalTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iPromotionsModalTests.m; sourceTree = "<group>"; };
+		AE522E641C474D58002F821A /* S4MPromotionTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotionTests.m; sourceTree = "<group>"; };
 		AE522E661C489C8A002F821A /* S4MLoadingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MLoadingManager.h; sourceTree = "<group>"; };
 		AE522E671C489C8A002F821A /* S4MLoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MLoadingManager.m; sourceTree = "<group>"; };
 		AE522E691C49ED21002F821A /* S4MPromotionListViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MPromotionListViewController_Private.h; sourceTree = "<group>"; };
@@ -159,8 +159,8 @@
 		AE522E021C45ECBF002F821A /* iPromotionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE522E641C474D58002F821A /* iPromotionsModalTests.m */,
-				AE522E031C45ECBF002F821A /* iPromotionsDataManagerTests.m */,
+				AE522E641C474D58002F821A /* S4MPromotionTests.m */,
+				AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */,
 				AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */,
 				AE522E051C45ECBF002F821A /* Info.plist */,
 			);
@@ -419,8 +419,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE522E041C45ECBF002F821A /* iPromotionsDataManagerTests.m in Sources */,
-				AE522E651C474D58002F821A /* iPromotionsModalTests.m in Sources */,
+				AE522E041C45ECBF002F821A /* S4MDataManagerTests.m in Sources */,
+				AE522E651C474D58002F821A /* S4MPromotionTests.m in Sources */,
 				AE522E6B1C49EE38002F821A /* S4MPromotionListViewControllerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

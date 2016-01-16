@@ -10,13 +10,13 @@
 #import "S4MDataManager.h"
 #import "S4MConstants.h"
 
-@interface iPromotionsDataManagerTests : XCTestCase {
+@interface S4MDataManagerTests : XCTestCase {
     S4MDataManager *dataManager;
 }
 
 @end
 
-@implementation iPromotionsDataManagerTests
+@implementation S4MDataManagerTests
 
 - (void)setUp {
     [super setUp];
