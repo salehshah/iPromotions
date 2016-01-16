@@ -12,13 +12,14 @@
 #import "S4MPromotion.h"
 #import "S4MConstants.h"
 #import "UIImageView+AFNetworking.h"
+#import "S4MUtils.h"
 
 
 @interface S4MPromotionListViewController ()
 
 @property (nonatomic, strong) NSArray *promotions;
 
-- (void)loadData;
+- (IBAction)loadData:(id)sender;
 - (void)showDataLoadErrorWithError:(NSError *)error;
 
 @end
@@ -34,7 +35,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     if (!self.promotions) {
-        [self loadData];
+        [self loadData:nil];
     }
 }
 
@@ -45,9 +46,10 @@
 
 #pragma mark - Private Methods
 
-- (void)loadData {
-    [S4MLoadingManagerInstance showLoadingIndidcatorView];
-    
+- (IBAction)loadData:(id)sender {
+    if (![self.refreshControl isRefreshing]) {
+        [S4MLoadingManagerInstance showLoadingIndidcatorView];
+    }
     [S4MDataManagerInstance loadData:^(id responseObject) {
        
         NSNumber *result = [responseObject objectForKey:S4M_RESULT_KEY];
@@ -62,19 +64,15 @@
             [self showDataLoadErrorWithError:error];
         }
         [S4MLoadingManagerInstance hideLoadingIndidcatorView];
+        [self.refreshControl endRefreshing];
     }];
     
 }
 
 - (void)showDataLoadErrorWithError:(NSError *)error {
-    
-    NSString *errorMessage = nil;
-    if (error.code == -1009) {
-        errorMessage = NSLocalizedString(@"Your connection appears to be offline. Try again after connecting to an internet connection.", @"");
-    }
-    else {
-        errorMessage = NSLocalizedString(@"Something went wrong, please try again.", @"");
-    }
+    // 1004 could not connect to the server
+    // 1001 request timed out
+    NSString *errorMessage = [S4MUtils errorMessageForErrorCode:error.code];
     
     if ([UIAlertController class]) {
         // use UIAlertController
@@ -96,7 +94,7 @@
                                    handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"Retry action");
-                                       [self loadData];
+                                       [self loadData:nil];
                                    }];
         
         [alertController addAction:cancelAction];
@@ -127,7 +125,7 @@
     }
     else {
         NSLog(@"Retry action");
-        [self loadData];
+        [self loadData:nil];
     }
 }
 

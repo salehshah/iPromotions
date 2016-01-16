@@ -22,6 +22,7 @@
 		AE522E651C474D58002F821A /* S4MPromotionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E641C474D58002F821A /* S4MPromotionTests.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E681C489C8A002F821A /* S4MLoadingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E671C489C8A002F821A /* S4MLoadingManager.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E6B1C49EE38002F821A /* S4MPromotionListViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E6E1C4A1219002F821A /* S4MUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E6D1C4A1219002F821A /* S4MUtils.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +72,8 @@
 		AE522E671C489C8A002F821A /* S4MLoadingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MLoadingManager.m; sourceTree = "<group>"; };
 		AE522E691C49ED21002F821A /* S4MPromotionListViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MPromotionListViewController_Private.h; sourceTree = "<group>"; };
 		AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotionListViewControllerTests.m; sourceTree = "<group>"; };
+		AE522E6C1C4A1219002F821A /* S4MUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MUtils.h; sourceTree = "<group>"; };
+		AE522E6D1C4A1219002F821A /* S4MUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MUtils.m; sourceTree = "<group>"; };
 		F8F0409069295804C13AB02F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -159,9 +162,9 @@
 		AE522E021C45ECBF002F821A /* iPromotionsTests */ = {
 			isa = PBXGroup;
 			children = (
-				AE522E641C474D58002F821A /* S4MPromotionTests.m */,
-				AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */,
 				AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */,
+				AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */,
+				AE522E641C474D58002F821A /* S4MPromotionTests.m */,
 				AE522E051C45ECBF002F821A /* Info.plist */,
 			);
 			path = iPromotionsTests;
@@ -202,6 +205,8 @@
 			children = (
 				AE522E5D1C45F0D8002F821A /* S4MConstants.h */,
 				AE522E5E1C45F0D8002F821A /* S4MConstants.m */,
+				AE522E6C1C4A1219002F821A /* S4MUtils.h */,
+				AE522E6D1C4A1219002F821A /* S4MUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -407,6 +412,7 @@
 			files = (
 				AE522E571C45ED98002F821A /* S4MPromotionListViewController.m in Sources */,
 				AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */,
+				AE522E6E1C4A1219002F821A /* S4MUtils.m in Sources */,
 				AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */,
 				AE522E681C489C8A002F821A /* S4MLoadingManager.m in Sources */,
 				AE522DEE1C45ECBF002F821A /* AppDelegate.m in Sources */,
