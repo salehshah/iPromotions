@@ -14,11 +14,12 @@
 #import "UIImageView+AFNetworking.h"
 
 
-@interface S4MPromotionListViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface S4MPromotionListViewController ()
 
 @property (nonatomic, strong) NSArray *promotions;
 @property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
+- (void)loadData;
 - (void)showDataLoadErrorWithMessage:(NSError *)error;
 
 @end
@@ -45,7 +46,7 @@
 
 #pragma mark - Private Methods
 
--(void)loadData {
+- (void)loadData {
     [[S4MLoadingManager sharedManager] showLoadingIndidcatorView];
     
     [[S4MDataManager sharedManager] loadData:^(id responseObject) {

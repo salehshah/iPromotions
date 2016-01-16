@@ -28,4 +28,11 @@
     self.announcementHTML = [dictionary objectForKey:S4M_PROMOTION_ANNOUNCEMENT_HTML];
 }
 
++ (S4MPromotion *)testObject {
+    S4MPromotion *promotion = [[S4MPromotion alloc] init];
+    promotion.ID = @"1111";
+    promotion.announcementTitle = @"Test Promotion";
+    promotion.announcementDate = @"Jan 1, 1970";
+    return promotion;
+}
 @end

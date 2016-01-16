@@ -9,7 +9,7 @@
         <!--Promotion List View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="S4MPromotionListViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PromotionList" automaticallyAdjustsScrollViewInsets="NO" id="BYZ-38-t0r" customClass="S4MPromotionListViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>

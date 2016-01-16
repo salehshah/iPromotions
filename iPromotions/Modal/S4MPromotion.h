@@ -22,4 +22,5 @@
 
 - (void)populateObjectWithDictionary:(NSDictionary *)dictionary;
 
++ (S4MPromotion *)testObject; // this method returns a dummy object which is used for unit testing
 @end

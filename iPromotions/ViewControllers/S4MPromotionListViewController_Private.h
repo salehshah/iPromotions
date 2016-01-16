@@ -13,6 +13,7 @@
 @property (nonatomic, strong) NSArray *promotions;
 @property (weak, nonatomic) IBOutlet UITableView *promotionsTableView;
 
+- (void)loadData;
 - (void)showDataLoadErrorWithMessage:(NSError *)error;
 
 @end
