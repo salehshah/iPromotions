@@ -42,36 +42,6 @@
     }];
 }
 
-#pragma mark - Error Test
-
--(void)testShowError {
-    [self.viewController showDataLoadErrorWithError:nil];
-    
-    UIWindow* window = [UIApplication sharedApplication].keyWindow;
-    if (!window)
-    {
-        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
-    }
-    UIView *view = [[window subviews] objectAtIndex:0];
-    
-    if ([view isKindOfClass:[UIAlertView class]] || [view isKindOfClass:[UIAlertController class]]) {
-        XCTAssert(@"Error is visible on screen, which should not be visible because error is null");
-    }
-    
-    NSDictionary *userInfo = @{ NSLocalizedDescriptionKey: NSLocalizedString(@"This is test error", nil) };
-    
-    NSError *error = [NSError errorWithDomain:@"NSErrorDomainTest"
-                                         code:-57
-                                     userInfo:userInfo];
-    [self.viewController showDataLoadErrorWithError:error];
-    
-    view = [[window subviews] objectAtIndex:0];
-    
-    if (![view isKindOfClass:[UIAlertView class]] && ![view isKindOfClass:[UIAlertController class]]) {
-        XCTAssert(@"Error is not visible on screen");
-    }
-}
-
 #pragma mark - View loading tests
 
 -(void)testThatViewLoads

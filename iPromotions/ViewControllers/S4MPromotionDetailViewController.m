@@ -8,6 +8,7 @@
 
 #import "S4MPromotionDetailViewController.h"
 #import "S4MLoadingManager.h"
+#import "S4MAlertManager.h"
 
 @interface S4MPromotionDetailViewController () <UIWebViewDelegate>
 
@@ -43,21 +44,37 @@
 #pragma mark - Private Methods
 
 - (void)loadWebView {
+    [S4MLoadingManagerInstance showLoadingIndidcatorView];
     [self.detailWebView loadHTMLString:self.htmlString baseURL:nil];
+    
 }
 
 #pragma mark - UIWebViewDelegate
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-    [S4MLoadingManagerInstance showLoadingIndidcatorView];
-}
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [S4MLoadingManagerInstance hideLoadingIndidcatorView];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
-    NSLog(@"webview error: %@",[error description]);
     [S4MLoadingManagerInstance hideLoadingIndidcatorView];
+
+    NSArray *actions = nil;
+    if ([UIAlertController class]) {
+        // use UIAlertController when available
+        UIAlertAction *okAction = [UIAlertAction
+                                   actionWithTitle:NSLocalizedString(@"OK", @"")
+                                   style:UIAlertActionStyleDefault
+                                   handler:nil];
+        actions = [NSArray arrayWithObjects:okAction, nil];
+        [S4MAlertManagerInstance showAlertForError:error sender:self actions:actions];
+        
+    } else {
+        // use UIAlertView for legacy version
+        
+        actions = [NSArray arrayWithObjects:NSLocalizedString(@"OK", @""), nil];
+        [S4MAlertManagerInstance showAlertForError:error sender:nil actions:actions];
+    }
+    
 }
 
 @end

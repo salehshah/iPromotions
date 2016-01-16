@@ -26,6 +26,8 @@
 		AE522E701C4A13D7002F821A /* S4MUtilsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E6F1C4A13D7002F821A /* S4MUtilsTests.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E731C4A1530002F821A /* S4MPromotionDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E721C4A1530002F821A /* S4MPromotionDetailViewController.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E751C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E741C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E791C4A26AD002F821A /* S4MAlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E781C4A26AD002F821A /* S4MAlertManager.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E7B1C4A2CD2002F821A /* S4MAlertManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E7A1C4A2CD2002F821A /* S4MAlertManagerTests.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +84,9 @@
 		AE522E721C4A1530002F821A /* S4MPromotionDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotionDetailViewController.m; sourceTree = "<group>"; };
 		AE522E741C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MPromotionDetailViewControllerTests.m; sourceTree = "<group>"; };
 		AE522E761C4A18A0002F821A /* S4MPromotionDetailViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MPromotionDetailViewController_Private.h; sourceTree = "<group>"; };
+		AE522E771C4A26AD002F821A /* S4MAlertManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MAlertManager.h; sourceTree = "<group>"; };
+		AE522E781C4A26AD002F821A /* S4MAlertManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MAlertManager.m; sourceTree = "<group>"; };
+		AE522E7A1C4A2CD2002F821A /* S4MAlertManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MAlertManagerTests.m; sourceTree = "<group>"; };
 		F8F0409069295804C13AB02F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -173,6 +178,7 @@
 				AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */,
 				AE522E741C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m */,
 				AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */,
+				AE522E7A1C4A2CD2002F821A /* S4MAlertManagerTests.m */,
 				AE522E641C474D58002F821A /* S4MPromotionTests.m */,
 				AE522E6F1C4A13D7002F821A /* S4MUtilsTests.m */,
 				AE522E051C45ECBF002F821A /* Info.plist */,
@@ -209,6 +215,8 @@
 				AE522E5A1C45EF49002F821A /* S4MDataManager.m */,
 				AE522E661C489C8A002F821A /* S4MLoadingManager.h */,
 				AE522E671C489C8A002F821A /* S4MLoadingManager.m */,
+				AE522E771C4A26AD002F821A /* S4MAlertManager.h */,
+				AE522E781C4A26AD002F821A /* S4MAlertManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -426,6 +434,7 @@
 				AE522E571C45ED98002F821A /* S4MPromotionListViewController.m in Sources */,
 				AE522E731C4A1530002F821A /* S4MPromotionDetailViewController.m in Sources */,
 				AE522E5F1C45F0D8002F821A /* S4MConstants.m in Sources */,
+				AE522E791C4A26AD002F821A /* S4MAlertManager.m in Sources */,
 				AE522E6E1C4A1219002F821A /* S4MUtils.m in Sources */,
 				AE522E631C474BC0002F821A /* S4MPromotion.m in Sources */,
 				AE522E681C489C8A002F821A /* S4MLoadingManager.m in Sources */,
@@ -442,6 +451,7 @@
 				AE522E751C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m in Sources */,
 				AE522E041C45ECBF002F821A /* S4MDataManagerTests.m in Sources */,
 				AE522E651C474D58002F821A /* S4MPromotionTests.m in Sources */,
+				AE522E7B1C4A2CD2002F821A /* S4MAlertManagerTests.m in Sources */,
 				AE522E701C4A13D7002F821A /* S4MUtilsTests.m in Sources */,
 				AE522E6B1C49EE38002F821A /* S4MPromotionListViewControllerTests.m in Sources */,
 			);

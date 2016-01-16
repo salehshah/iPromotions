@@ -12,8 +12,8 @@
 #import "S4MPromotion.h"
 #import "S4MConstants.h"
 #import "UIImageView+AFNetworking.h"
-#import "S4MUtils.h"
 #import "S4MPromotionDetailViewController.h"
+#import "S4MAlertManager.h"
 
 
 @interface S4MPromotionListViewController () <UIAlertViewDelegate>
@@ -72,14 +72,9 @@
 
 - (void)showDataLoadErrorWithError:(NSError *)error {
     
-    NSString *errorMessage = [S4MUtils errorMessageForErrorCode:error.code];
-    
+    NSArray *actions = nil;
     if ([UIAlertController class]) {
-        // use UIAlertController where available
-        
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:errorMessage
-                                                                          preferredStyle:UIAlertControllerStyleAlert];
-        
+        // use UIAlertController when available
         UIAlertAction *cancelAction = [UIAlertAction
                                        actionWithTitle:NSLocalizedString(@"Cancel", @"")
                                        style:UIAlertActionStyleCancel
@@ -89,30 +84,22 @@
                                        }];
         
         UIAlertAction *retryAction = [UIAlertAction
-                                   actionWithTitle:NSLocalizedString(@"Retry", @"")
-                                   style:UIAlertActionStyleDefault
-                                   handler:^(UIAlertAction *action)
-                                   {
-                                       NSLog(@"Retry action");
-                                       [self loadData:nil];
-                                   }];
-        
-        [alertController addAction:cancelAction];
-        [alertController addAction:retryAction];
-        
-        [self presentViewController:alertController animated:YES completion:nil];
-        
+                                      actionWithTitle:NSLocalizedString(@"Retry", @"")
+                                      style:UIAlertActionStyleDefault
+                                      handler:^(UIAlertAction *action)
+                                      {
+                                          NSLog(@"Retry action");
+                                          [self loadData:nil];
+                                      }];
+        actions = [NSArray arrayWithObjects:cancelAction,retryAction, nil];
         
     } else {
         // use UIAlertView for legacy version
         
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:errorMessage
-                                                           delegate:self
-                                                  cancelButtonTitle:NSLocalizedString(@"Cancel", @"")
-                                                  otherButtonTitles:NSLocalizedString(@"Retry", @""), nil];
-        [alertView show];
-        
+        actions = [NSArray arrayWithObjects:NSLocalizedString(@"Cancel", @""),NSLocalizedString(@"Retry", @""), nil];
     }
+    
+    [S4MAlertManagerInstance showAlertForError:error sender:self actions:actions];
     
     
 }
