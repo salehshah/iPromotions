@@ -8,14 +8,19 @@
 
 #import "S4MRequestMoreInfoViewController.h"
 
-@interface S4MRequestMoreInfoViewController () <UITextFieldDelegate>
+@interface S4MRequestMoreInfoViewController () 
 
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *mobileTextField;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (weak, nonatomic) IBOutlet UITextField *birthDateField;
+@property (weak, nonatomic) IBOutlet UITextField *addressField;
 @property (weak, nonatomic) IBOutlet UISwitch *sendPromotionsSwitch;
 
 - (void)configureView;
-
-- (IBAction)sendButtonPressed:(id)sender;
-- (IBAction)cancelButtonPressed:(id)sender;
+- (void)sendButtonPressed:(id)sender;
+- (void)cancelButtonPressed:(id)sender;
+- (IBAction)sendPromotionsSwitchValueChanged:(id)sender;
 
 @end
 
@@ -43,7 +48,24 @@
     
 }
 
-- (IBAction)sendButtonPressed:(id)sender {
+- (void)sendButtonPressed:(id)sender {
+    
+}
+
+- (void)cancelButtonPressed:(id)sender {
+    
+}
+
+- (IBAction)sendPromotionsSwitchValueChanged:(id)sender {
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL) textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+- (void)textFieldDidEndEditing:(UITextField *)textField {
     
 }
 

@@ -29,7 +29,7 @@
 		AE522E791C4A26AD002F821A /* S4MAlertManager.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E781C4A26AD002F821A /* S4MAlertManager.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E7B1C4A2CD2002F821A /* S4MAlertManagerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E7A1C4A2CD2002F821A /* S4MAlertManagerTests.m */; settings = {ASSET_TAGS = (); }; };
 		AE522E7E1C4A60AE002F821A /* S4MRequestMoreInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E7D1C4A60AE002F821A /* S4MRequestMoreInfoViewController.m */; settings = {ASSET_TAGS = (); }; };
-		AE522E801C4A6C8F002F821A /* S4MRequestMoreInfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E7F1C4A6C8F002F821A /* S4MRequestMoreInfoTests.m */; settings = {ASSET_TAGS = (); }; };
+		AE522E801C4A6C8F002F821A /* S4MRequestMoreInfoViewControllerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AE522E7F1C4A6C8F002F821A /* S4MRequestMoreInfoViewControllerTests.m */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,7 +91,8 @@
 		AE522E7A1C4A2CD2002F821A /* S4MAlertManagerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MAlertManagerTests.m; sourceTree = "<group>"; };
 		AE522E7C1C4A60AE002F821A /* S4MRequestMoreInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MRequestMoreInfoViewController.h; sourceTree = "<group>"; };
 		AE522E7D1C4A60AE002F821A /* S4MRequestMoreInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MRequestMoreInfoViewController.m; sourceTree = "<group>"; };
-		AE522E7F1C4A6C8F002F821A /* S4MRequestMoreInfoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MRequestMoreInfoTests.m; sourceTree = "<group>"; };
+		AE522E7F1C4A6C8F002F821A /* S4MRequestMoreInfoViewControllerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = S4MRequestMoreInfoViewControllerTests.m; sourceTree = "<group>"; };
+		AE522E811C4A73D7002F821A /* S4MRequestMoreInfoViewController_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S4MRequestMoreInfoViewController_Private.h; sourceTree = "<group>"; };
 		F8F0409069295804C13AB02F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -182,7 +183,7 @@
 			children = (
 				AE522E6A1C49EE37002F821A /* S4MPromotionListViewControllerTests.m */,
 				AE522E741C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m */,
-				AE522E7F1C4A6C8F002F821A /* S4MRequestMoreInfoTests.m */,
+				AE522E7F1C4A6C8F002F821A /* S4MRequestMoreInfoViewControllerTests.m */,
 				AE522E031C45ECBF002F821A /* S4MDataManagerTests.m */,
 				AE522E7A1C4A2CD2002F821A /* S4MAlertManagerTests.m */,
 				AE522E641C474D58002F821A /* S4MPromotionTests.m */,
@@ -212,6 +213,7 @@
 				AE522E761C4A18A0002F821A /* S4MPromotionDetailViewController_Private.h */,
 				AE522E7C1C4A60AE002F821A /* S4MRequestMoreInfoViewController.h */,
 				AE522E7D1C4A60AE002F821A /* S4MRequestMoreInfoViewController.m */,
+				AE522E811C4A73D7002F821A /* S4MRequestMoreInfoViewController_Private.h */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -457,7 +459,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE522E801C4A6C8F002F821A /* S4MRequestMoreInfoTests.m in Sources */,
+				AE522E801C4A6C8F002F821A /* S4MRequestMoreInfoViewControllerTests.m in Sources */,
 				AE522E751C4A1723002F821A /* S4MPromotionDetailViewControllerTests.m in Sources */,
 				AE522E041C45ECBF002F821A /* S4MDataManagerTests.m in Sources */,
 				AE522E651C474D58002F821A /* S4MPromotionTests.m in Sources */,

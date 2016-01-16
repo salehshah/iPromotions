@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface S4MRequestMoreInfoViewController : UIViewController
+@interface S4MRequestMoreInfoViewController : UIViewController <UITextFieldDelegate>
 
 @end

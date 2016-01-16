@@ -169,6 +169,9 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q0b-Ua-VGb">
                                 <rect key="frame" x="276" y="323" width="51" height="31"/>
                                 <animations/>
+                                <connections>
+                                    <action selector="sendPromotionsSwitchValueChanged:" destination="NiP-37-6Go" eventType="valueChanged" id="tY7-YO-VlD"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <animations/>
@@ -198,6 +201,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="E6Z-OH-ImC"/>
                     <connections>
+                        <outlet property="addressField" destination="aWR-RA-Gcx" id="0pS-Kn-Ryh"/>
+                        <outlet property="birthDateField" destination="kZP-og-2Bv" id="PeN-lU-2xE"/>
+                        <outlet property="emailTextField" destination="cOs-XI-kZq" id="cEw-Da-IiU"/>
+                        <outlet property="mobileTextField" destination="MYK-ns-zn4" id="xvW-nq-ZbI"/>
+                        <outlet property="nameTextField" destination="YzJ-IJ-lws" id="ed3-EI-wOu"/>
                         <outlet property="sendPromotionsSwitch" destination="Q0b-Ua-VGb" id="lQE-Xm-p59"/>
                     </connections>
                 </viewController>
