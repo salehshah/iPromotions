@@ -7,7 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface S4MRequestMoreInfoViewController : UIViewController <UITextFieldDelegate>
+@class S4MPromotion;
+@interface S4MRequestMoreInfoViewController : UIViewController <UITextFieldDelegate,MFMailComposeViewControllerDelegate>
+
+- (void)setSelectedPromotion:(S4MPromotion *)promotion;
 
 @end

@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @class S4MPromotion;
-@interface S4MPromotionDetailViewController : UIViewController
+@interface S4MPromotionDetailViewController : UIViewController 
 
 - (void)setSelectedPromotion:(S4MPromotion *)promotion;
 

@@ -24,7 +24,7 @@
 
 - (void)showAlertForError:(NSError *)error sender:(UIViewController *)sender actions:(NSArray *)actions {
     
-    NSString *errorMessage = [S4MUtils errorMessageForErrorCode:error.code];
+    NSString *errorMessage = [S4MUtils errorMessageForError:error];
     
     if ([UIAlertController class]) {
         // use UIAlertController where available
@@ -93,9 +93,40 @@
                 [actionSheet addButtonWithTitle:buttonTitle];
             }
         }
-        
         [actionSheet showInView:sender.view];
     }
+}
+
+- (void)showAlertWithSender:(UIViewController *)sender message:(NSString *)message {
+    
+    if ([UIAlertController class]) {
+        // use UIAlertController where available
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil
+                                                                                 message:message
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:nil];
+        [alertController addAction:okAction];
+        
+        [sender presentViewController:alertController animated:YES completion:nil];
+        
+        
+    } else {
+        // use UIAlertView for legacy version
+        
+        
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil
+                                                            message:message
+                                                           delegate:nil
+                                                  cancelButtonTitle:NSLocalizedString(@"OK", @"")
+                                                  otherButtonTitles:nil];
+        
+        [alertView show];
+    }
+
 }
 
 @end

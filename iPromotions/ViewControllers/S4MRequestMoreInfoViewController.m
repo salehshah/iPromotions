@@ -7,6 +7,8 @@
 //
 
 #import "S4MRequestMoreInfoViewController.h"
+#import "S4MAlertManager.h"
+#import "S4MPromotion.h"
 
 @interface S4MRequestMoreInfoViewController () 
 
@@ -17,12 +19,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *addressField;
 @property (weak, nonatomic) IBOutlet UISwitch *sendPromotionsSwitch;
 
+@property (strong, nonatomic) MFMailComposeViewController *composeViewController;
+@property (strong, nonatomic) S4MPromotion *promotion;
+
 - (void)configureView;
 - (void)sendButtonPressed:(id)sender;
 - (void)cancelButtonPressed:(id)sender;
 - (void)doneClicked:(id)sender;
-- (IBAction)sendPromotionsSwitchValueChanged:(id)sender;
-- (BOOL)validateFields;
+- (NSError *)validateFields;
 @end
 
 @implementation S4MRequestMoreInfoViewController
@@ -43,6 +47,12 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - Public Methods
+
+- (void)setSelectedPromotion:(S4MPromotion *)promotion {
+    self.promotion = promotion;
+}
+
 #pragma mark - Private Methods
 
 - (void)configureView {
@@ -60,11 +70,41 @@
 }
 
 - (void)sendButtonPressed:(id)sender {
-    if ([self validateFields]) {
+    NSError *error = [self validateFields];
+    if (!error) {
+        NSString *messgageBody = [self buildMessageBody];
         
+        if ([MFMailComposeViewController canSendMail]) {
+            _composeViewController = [[MFMailComposeViewController alloc] initWithNibName:nil bundle:nil];
+            [self.composeViewController setMailComposeDelegate:self];
+            [self.composeViewController setToRecipients:@[@"MJeblak@farabi.ae"]];
+            [self.composeViewController setSubject:@"Request more info"];
+            [self.composeViewController setMessageBody:messgageBody isHTML:NO];
+            [self presentViewController:self.composeViewController animated:YES completion:nil];
+        }
+        else {
+            [S4MAlertManagerInstance showAlertWithSender:self message:@"Mail services are not available."];
+        }
     }
     else {
-        //get nserror
+        //show error
+        
+        NSArray *actions = nil;
+        if ([UIAlertController class]) {
+            // use UIAlertController when available
+            UIAlertAction *okAction = [UIAlertAction
+                                           actionWithTitle:NSLocalizedString(@"OK", @"")
+                                           style:UIAlertActionStyleCancel
+                                        handler:nil];
+            actions = [NSArray arrayWithObjects:okAction, nil];
+            [S4MAlertManagerInstance showAlertForError:error sender:self actions:actions];
+            
+        } else {
+            // use UIAlertView for legacy version
+            actions = [NSArray arrayWithObjects:NSLocalizedString(@"OK", @""), nil];
+            [S4MAlertManagerInstance showAlertForError:error sender:nil actions:actions];
+        }
+        
     }
     
 }
@@ -73,24 +113,37 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(BOOL)validateFields {
+-(NSError *)validateFields {
     //return nserror
+    
+    NSError *error = nil;
+    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+    NSString *errorDomain = @"NSErrorDomainFieldValidation";
+    NSInteger errorCode = 9999;
     if (!self.nameTextField.text || [self.nameTextField.text isEqualToString:@""]) {
-        return NO;
+        [userInfo setObject:@"Name field cannot be empty." forKey:NSLocalizedDescriptionKey];
+        error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+        return error;
     }
-    if (!self.mobileTextField.text || [self.nameTextField.text isEqualToString:@""]) {
-        return NO;
+    if (!self.mobileTextField.text || [self.mobileTextField.text isEqualToString:@""]) {
+        [userInfo setObject:@"Mobile field cannot be empty." forKey:NSLocalizedDescriptionKey];
+        error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+        return error;
     }
     else {
         NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
         [formatter setLocale: [NSLocale systemLocale]];
         [formatter setAllowsFloats: NO];
         if (![formatter numberFromString: self.mobileTextField.text]) {
-            return NO;
+            [userInfo setObject:@"Mobile number is not in correct format." forKey:NSLocalizedDescriptionKey];
+            error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+            return error;
         }
     }
-    if (!self.emailTextField.text || [self.nameTextField.text isEqualToString:@""]) {
-        return NO;
+    if (!self.emailTextField.text || [self.emailTextField.text isEqualToString:@""]) {
+        [userInfo setObject:@"Email field cannot be empty." forKey:NSLocalizedDescriptionKey];
+        error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+        return error;
     }
     else {
         BOOL stricterFilter = NO; // Discussion http://blog.logichigh.com/2010/09/02/validating-an-e-mail-address/
@@ -99,20 +152,23 @@
         NSString *emailRegex = stricterFilter ? stricterFilterString : laxString;
         NSPredicate *emailTest = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", emailRegex];
         if (![emailTest evaluateWithObject:self.emailTextField.text]) {
-            return NO;
+            [userInfo setObject:@"Email is not in the correct format." forKey:NSLocalizedDescriptionKey];
+            error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+            return error;
         }
     }
-    if (self.birthDateField.text) {
+    if (self.birthDateField.text && ![self.birthDateField.text isEqualToString:@""]) {
         NSString *birthDate = self.birthDateField.text;
         NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"MMMM dd, yyyy"];
         NSDate *date = [dateFormatter dateFromString:birthDate];
         if (!date) {
-            return NO;
+            [userInfo setObject:@"Birth date is not in the correct format." forKey:NSLocalizedDescriptionKey];
+            error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+            return error;
         }
     }
-    
-    return YES;
+    return error;
 }
 
 - (void)doneClicked:(id)sender {
@@ -136,10 +192,6 @@
     self.birthDateField.text = [NSString stringWithFormat:@"%@",dateString];
 }
 
-- (IBAction)sendPromotionsSwitchValueChanged:(id)sender {
-    
-}
-
 - (void)addToolbarToTextField:(UITextField *)textField {
     
     UIToolbar *keyboardDoneButtonView = [[UIToolbar alloc] init];
@@ -157,6 +209,29 @@
     else if (textField == self.birthDateField) {
         doneButton.tag = 12;
     }
+}
+
+-(NSString *)buildMessageBody {
+    NSMutableString *messageBody = [[NSMutableString alloc] init];
+    [messageBody appendFormat:@"Name: %@",self.nameTextField.text];
+    [messageBody appendString:@"\n"];
+    [messageBody appendFormat:@"Mobile: %@",self.mobileTextField.text];
+    [messageBody appendString:@"\n"];
+    [messageBody appendFormat:@"Email: %@",self.emailTextField.text];
+    [messageBody appendString:@"\n"];
+    [messageBody appendFormat:@"Birth Date: %@",self.birthDateField.text];
+    [messageBody appendString:@"\n"];
+    [messageBody appendFormat:@"Address: %@",self.addressField.text];
+    [messageBody appendString:@"\n"];
+    [messageBody appendString:@"\n"];
+    
+    if (self.promotion && self.sendPromotionsSwitch.isOn) {
+        [messageBody appendString:@"Promotion: \n\n"];
+        [messageBody appendString:self.promotion.announcementDescription];
+    }
+    
+    
+    return messageBody;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -200,6 +275,12 @@
         [self addToolbarToTextField:self.birthDateField];
     }
     return YES;
+}
+
+#pragma mark - MFMessageComposerDelegate
+
+-(void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
+    [self.composeViewController dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

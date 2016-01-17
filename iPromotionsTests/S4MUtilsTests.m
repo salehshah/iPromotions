@@ -26,13 +26,22 @@
 }
 
 - (void)testErrorMessageForErrorCode {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
     
-    NSString *errorMessage = [S4MUtils errorMessageForErrorCode:0];
+    NSError *error = nil;
+    NSMutableDictionary *userInfo = [[NSMutableDictionary alloc] init];
+    NSString *errorDomain = @"NSErrorDomainTest";
+    NSInteger errorCode = 0;
+    [userInfo setObject:@"This is a test error" forKey:NSLocalizedDescriptionKey];
+    error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+    
+    NSString *errorMessage = [S4MUtils errorMessageForError:error];
     XCTAssertNotNil(errorMessage,@"Error message is nil");
     
-    errorMessage = [S4MUtils errorMessageForErrorCode:-1009];
+    errorCode = 9999;
+    [userInfo setObject:@"This is a test error" forKey:NSLocalizedDescriptionKey];
+    error = [NSError errorWithDomain:errorDomain code:errorCode userInfo:userInfo];
+    
+    errorMessage = [S4MUtils errorMessageForError:error];
     XCTAssertNotNil(errorMessage,@"Error message is nil");
 }
 

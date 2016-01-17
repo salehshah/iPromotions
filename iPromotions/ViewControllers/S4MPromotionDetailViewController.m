@@ -33,6 +33,10 @@
     [self loadWebView];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [S4MLoadingManagerInstance hideLoadingIndidcatorView];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -75,7 +79,9 @@
                                           S4MRequestMoreInfoViewController *requestMoreInfoViewController = [storyboard instantiateViewControllerWithIdentifier:@"RequestMoreInfo"];
                                           UINavigationController *navigationController =
                                           [[UINavigationController alloc] initWithRootViewController:requestMoreInfoViewController];
-                                          [self presentViewController:navigationController animated:YES completion:nil];
+                                          [self presentViewController:navigationController animated:YES completion:^{
+                                              [requestMoreInfoViewController setSelectedPromotion:self.promotion];
+                                          }];
                                           
                                       }];
         UIAlertAction *shareAction = [UIAlertAction

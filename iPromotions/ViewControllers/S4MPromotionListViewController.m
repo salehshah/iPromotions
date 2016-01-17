@@ -98,10 +98,7 @@
         
         actions = [NSArray arrayWithObjects:NSLocalizedString(@"Cancel", @""),NSLocalizedString(@"Retry", @""), nil];
     }
-    
     [S4MAlertManagerInstance showAlertForError:error sender:self actions:actions];
-    
-    
 }
 
 #pragma mark - UIAlertView Delegate

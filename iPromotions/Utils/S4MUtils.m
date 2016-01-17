@@ -10,8 +10,9 @@
 
 @implementation S4MUtils
 
-+ (NSString *)errorMessageForErrorCode:(NSInteger)code {
++ (NSString *)errorMessageForError:(NSError *)error {
     NSString *errorMessage = nil;
+    NSInteger code = error.code;
     switch (code) {
         case -1009:
             errorMessage = NSLocalizedString(@"Your connection appears to be offline. Try again after connecting to an internet connection.", @"");
@@ -21,6 +22,9 @@
             break;
         case -1003:
             errorMessage = NSLocalizedString(@"Server not responding, please try again.", @"");
+            break;
+        case 9999:
+            errorMessage = NSLocalizedString([error localizedDescription], @"");
             break;
             
         default:

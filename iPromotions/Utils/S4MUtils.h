@@ -10,6 +10,6 @@
 
 @interface S4MUtils : NSObject
 
-+ (NSString *)errorMessageForErrorCode:(NSInteger)code;
++ (NSString *)errorMessageForError:(NSError *)error;
 
 @end

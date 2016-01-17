@@ -17,4 +17,6 @@
 
 - (void)showAlertForError:(NSError *)error sender:(UIViewController *)sender actions:(NSArray *)actions;
 - (void)showActionSheetWithSender:(UIViewController *)sender actions:(NSArray *)actions;
+- (void)showAlertWithSender:(UIViewController *)sender message:(NSString *)message;
+
 @end

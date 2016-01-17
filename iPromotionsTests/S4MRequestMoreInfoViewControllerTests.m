@@ -101,15 +101,37 @@
     self.viewController.emailTextField.text = @"this is not a valid email";
     self.viewController.birthDateField.text = @"this is not valid date";
     self.viewController.addressField.text = nil;
-    XCTAssertFalse([self.viewController validateFields],@"Fields are not validated properly");
+    XCTAssertTrue([self.viewController validateFields],@"Fields are not validated properly");
     
     self.viewController.nameTextField.text = @"S. Shah";
     self.viewController.mobileTextField.text = @"76999911";
     self.viewController.emailTextField.text = @"sshah@randommail.com";
     self.viewController.birthDateField.text = @"June 3, 1987";
     self.viewController.addressField.text = nil;
-    XCTAssertTrue([self.viewController validateFields],@"Fields are not validated properly");
+    XCTAssertFalse([self.viewController validateFields],@"Fields are not validated properly");
     
+}
+
+#pragma mark - Test actions
+
+- (void)testSendButtonPressed {
+    self.viewController.nameTextField.text = nil;
+    self.viewController.mobileTextField.text = @"this is not a phone number";
+    self.viewController.emailTextField.text = @"this is not a valid email";
+    self.viewController.birthDateField.text = @"this is not valid date";
+    self.viewController.addressField.text = nil;
+    [self.viewController sendButtonPressed:nil];
+    
+    UIWindow* window = [UIApplication sharedApplication].keyWindow;
+    if (!window)
+    {
+        window = [[UIApplication sharedApplication].windows objectAtIndex:0];
+    }
+    UIView *view = [[window subviews] objectAtIndex:0];
+    
+    if ([view isKindOfClass:[UIAlertView class]] || [view isKindOfClass:[UIAlertController class]]) {
+        XCTAssert(@"Alert is visible on screen, which should not be visible because fields are not valid.");
+    }
 }
 
 @end
